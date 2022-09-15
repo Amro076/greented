@@ -349,6 +349,7 @@ class AppController
              'tirelire'=>$_SESSION['user']['tirelire'] - $produit['prix'],
              'id'=>$_SESSION['user']['id']
          ]);
+         $_SESSION['user']['tirelire']=$_SESSION['user']['tirelire'] - $produit['prix'];
         endforeach;
 
 

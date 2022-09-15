@@ -42,14 +42,18 @@ endif;
     ?>
     </tbody>
 </table>
+<h4>Total panier: <?=  '<strong>'.$total.' €</strong>' ; ?></h4>
 <div class="text-center">
 <a href="<?= BASE_PATH.'panier/supprimer' ;   ?>" class="btn btn-danger">Vider le panier</a>
 
-<?php if (isset($_SESSION['user'])): ?>
+<?php if (isset($_SESSION['user'])):
+    if ($_SESSION['user']['tirelire'] >= $total):
+    ?>
 
 <a href="<?= BASE_PATH.'panier/commander' ;  ?>" class="btn btn-info">Commander</a>
-
 <?php else: ?>
+        <a href="" class="btn btn-info">Il est tant de remplir la tirelire !!</a>
+<?php endif; else: ?>
     <a href="<?=  BASE_PATH.'utilisateur/connexion' ; ?>" class="btn btn-info">Connectez-vous pour passer à la commande</a>
 <?php endif; ?>
 </div>

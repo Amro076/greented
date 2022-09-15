@@ -47,11 +47,14 @@
                 </li>
             </ul>
 
+            <?php if (isset($_SESSION['user'])): ?><button class="disabled btn btn-danger
+ text-white btn-lg me-5 position-relative" >Tirelire<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info"><?=  $_SESSION['user']['tirelire'].'€' ; ?></span></button><?php endif; ?>
             <a href="<?=  BASE_PATH.'panier/gestion' ; ?>" class="btn btn-warning <?php if (!isset($_SESSION['panier'])) { echo 'disabled';} ?>
  text-dark btn-lg me-5 position-relative">Voir le panier<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?php if (!isset($_SESSION['panier'])):echo  0; else: echo count($_SESSION['panier']); endif; ?></span></a>
 
+            <?php if (isset($_SESSION['user'])): ?>
             <a href="<?=  BASE_PATH.'produit/ajout' ; ?>" class="btn btn-success btn-lg me-5">Créer une nouvelle annonce</a>
-
+            <?php endif; ?>
             <?php if (!isset($_SESSION['user'])): ?>
             <a href="<?=  BASE_PATH.'utilisateur/inscription' ; ?>" class="btn btn-info  me-5">Inscription</a>
             <a href="<?=  BASE_PATH.'utilisateur/connexion' ; ?>" class="btn btn-primary  me-5">Connexion</a>
