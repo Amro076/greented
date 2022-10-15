@@ -10,7 +10,7 @@ class Produit extends Db
     {
         // $data recoit un tableau avec les marqueurs associés à leur valeur
 
-        $request="INSERT INTO produit (titre, photo, description, prix, etat, type, id_utilisateur) VALUES (:titre, :photo,:description, :prix,:etat,:type, :id_utilisateur )";
+        $request="INSERT INTO produit (titre, photo, description, prix, etat, type, id_utilisateur, id_categorie) VALUES (:titre, :photo,:description, :prix,:etat,:type, :id_utilisateur, :id_categorie )";
         $response=self::getDb()->prepare($request);
         $response->execute(self::htmlspecialchars($data));
         return self::getDb()->lastInsertId();
@@ -75,7 +75,7 @@ class Produit extends Db
 
 
 
-        $request= "UPDATE produit SET titre=:titre, photo=:photo, description=:description, prix=:prix, etat=:etat, type=:type  WHERE id=:id";
+        $request= "UPDATE produit SET titre=:titre, photo=:photo, description=:description, prix=:prix, etat=:etat, type=:type  WHERE id=:id, id_categorie=:id_categorie";
 
         $response=self::getDb()->prepare($request);
         $response->execute(self::htmlspecialchars($data));

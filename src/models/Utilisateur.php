@@ -14,7 +14,17 @@ class Utilisateur extends Db
 
     }
 
-    public static function findByEmail($email)
+    public static function update(array $data)
+    {
+        // $data recoit un tableau avec les marqueurs associés à leur valeur
+
+        $request = "UPDATE utilisateur SET email=:email, pseudo=:pseudo, nom=:nom, prenom=:prenom, numero_voie=:numero_voie, voie=:voie, cp=:cp, ville=:ville WHERE id=:id";
+        $response = self::getDb()->prepare($request);
+        $response->execute(self::htmlspecialchars($data));
+        return self::getDb()->lastInsertId();
+    }
+
+        public static function findByEmail($email)
     {
         $request="SELECT * FROM utilisateur WHERE email=:email";
         $response=self::getDb()->prepare($request);
@@ -34,6 +44,7 @@ class Utilisateur extends Db
 
     }
 
+
     public static function updateTirelire(array $data)
     {
         $request="UPDATE utilisateur SET tirelire=:tirelire WHERE id=:id";
@@ -41,6 +52,32 @@ class Utilisateur extends Db
         return $response->execute($data);
 
     }
+    public static function updateRelais(array $data)
+    {
+        $request="UPDATE utilisateur SET point_relais=:point_relais WHERE id=:id";
+        $response=self::getDb()->prepare($request);
+        return $response->execute($data);
+
+    }
+
+    public static function updateMdp(array $data)
+    {
+        $request="UPDATE utilisateur SET mdp=:mdp WHERE id=:id";
+        $response=self::getDb()->prepare($request);
+        return $response->execute($data);
+
+    }
+
+    public static function findAdresse ($id)
+    {
+        $request="SELECT numero_voie, voie, cp, ville, point_relais FROM utilisateur WHERE id=:id";
+        $response=self::getDb()->prepare($request);
+        return $response->execute($id);
+
+
+
+    }
+
 
 
 

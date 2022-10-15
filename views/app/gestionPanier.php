@@ -50,7 +50,7 @@ endif;
     if ($_SESSION['user']['tirelire'] >= $total):
     ?>
 
-<a href="<?= BASE_PATH.'panier/commander' ;  ?>" class="btn btn-info">Commander</a>
+<a href="<?= BASE_PATH.'livraison/choix' ;  ?>" class="btn btn-info">Commander</a>
 <?php else: ?>
         <a href="" class="btn btn-info">Il est tant de remplir la tirelire !!</a>
 <?php endif; else: ?>

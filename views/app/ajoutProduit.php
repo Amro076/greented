@@ -1,5 +1,12 @@
 <?php  include(VIEWS.'_partials/header.php');
 
+if (!isset($_SESSION['user'])){
+
+    header('location:../');
+    exit();
+
+
+}
 ?>
 
 
@@ -21,6 +28,14 @@
                 <option <?php if (isset($produit) && $produit['type']=='femme'): echo 'selected';     endif; ?> value="femme">Femme</option>
                 <option <?php if (isset($produit) && $produit['type'] =='enfant'): echo 'selected';     endif;?> value="enfant">Enfant</option>
 
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleSelect1" class="form-label mt-4">Sous-Catégorie</label>
+            <select name="id_categorie" class="form-select" id="exampleSelect1">
+                <?php foreach($categories as $categorie): ?>
+                <option <?php if (isset($produit) && $produit['id_categorie']==$categorie['id']): echo 'selected';     endif; ?>  value="<?=  $categorie['id'] ; ?>"><?=  $categorie['titre'] ; ?></option>
+               <?php endforeach; ?>
             </select>
         </div>
         <div class="form-group">

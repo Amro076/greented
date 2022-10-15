@@ -18,6 +18,36 @@ class Achat extends Db
     }
 
 
+    public static function detailAchat($id)
+    {
+        $request="SELECT * FROM achat WHERE id_commande=:id_commande";
+        $response=self::getDb()->prepare($request);
+        $response->execute($id);
+
+        return $response->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+
+
+    public static function detailCommandeAcheteur($id)
+    {
+        $request="SELECT p.titre, p.prix, p.photo, u.*, c.date , c.statut
+         FROM produit p 
+         INNER JOIN achat a
+         ON a.id_produit=p.id
+         INNER JOIN commande c
+         ON a.id_commande=c.id
+         INNER JOIN utilisateur u 
+         ON u.id=c.id_utilisateur
+         WHERE  u.id=:id";
+
+        $response=self::getDb()->prepare($request);
+        $response->execute($id);
+
+        return $response->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+
 
 
 

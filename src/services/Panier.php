@@ -32,6 +32,7 @@ class Panier
             $_SESSION['panier'] = $panier;
         else:
             self::delete();
+        return 1;
         endif;
 
 

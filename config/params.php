@@ -47,6 +47,23 @@ $routes = [
     '/panier/retirer'=>  ['AppController', 'retirerPanier'],
     '/panier/supprimer'=>  ['AppController', 'supprimerPanier'],
     '/panier/commander'=>  ['AppController', 'commander'],
+    '/livraison/choix'=>  ['AppController', 'choixPointRelais'],
+    '/produit/vrac'=>  ['AppController', 'voirVrac'],
+    '/produit/ficheProduit' => ['AppController', 'ficheProduit'],
+    '/profil'=>  ['AppController', 'profil'],
+    '/profil/update'=>  ['AppController', 'updateProfil'],
+    '/profil/updateMdp'=>  ['AppController', 'updateMdp'],
+    '/profil/updateRelais'=>  ['AppController', 'updateRelais'],
+    '/profil/gestionProfil'=>  ['AppController', 'gestionProfil'],
+    '/profil/gestionVente' => ['AppController', 'gestionVente'],
+    '/profil/gestionAchat'=> ['AppController', 'gestionAchat'],
+    '/categorie/ajout'    =>[ 'AppController', 'ajoutCategorie'],
+    '/categorie/gestion'  =>[ 'AppController', 'gestionCategorie'],
+    '/categorie/modification'  =>[ 'AppController', 'modificationCategorie'],
+    '/categorie/suppression'  =>[ 'AppController', 'suppressionCategorie'],
+    '/produit/filtre' => ['AppController', 'filtre'],
+    '/livraison/update'=>['AppController', 'updateStatut'],
+    '/utilisateur/updateTirelire'=>['AppController', 'updateTirelire'],
 
 
 ];
